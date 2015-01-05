@@ -24,11 +24,12 @@ fi
 # write all the profile stuff for the user if required
 grep -q WORKON /home/$USER/.bashrc
 if [ $? -ne 0 ]; then
-    echo -e "\034[0;31m > Updating profile file\033[0m"
+    echo -e "\033[0;31m > Updating profile file\033[0m"
     echo "export WORKON_HOME=~/.virtualenvs" >> /home/$USER/.bashrc
     echo "source /usr/local/bin/virtualenvwrapper.sh" >> /home/$USER/.bashrc
     echo "export PIP_VIRTUALENV_BASE=~/.virtualenvs" >> /home/$USER/.bashrc
     echo "workon le-code-test" >> /home/$USER/.bashrc
+    echo "cd /vagrant/" >> /home/$USER/.bashrc
 fi
 
 echo -e "\033[0;34m > Setting up virtualenv\033[0m"

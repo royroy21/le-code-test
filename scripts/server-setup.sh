@@ -38,11 +38,12 @@ if [ $ENV == 'dev' -o $ENV == 'test' ]
 fi
 
 echo -e "\033[0;34m > Installing all the image support libs for pillow.\033[0m"
-sudo apt-get install libjpeg62-dev zlib1g-dev libfreetype6-dev liblcms1-dev
+sudo apt-get install -y libjpeg62-dev zlib1g-dev libfreetype6-dev liblcms1-dev
 
 # do the rest as the user we'll be logging in as through SSH
 chmod +x /vagrant/scripts/server-setup-user.sh
 sudo -u $USER /vagrant/scripts/server-setup-user.sh $ENV $USER
 
 # install requirements
-# run migrations
+echo -e "\033[0;34m > Installing the pip requirements.\033[0m"
+sudo -H -u vagrant /home/vagrant/.virtualenvs/le-code-test/bin/pip install -r /vagrant/requirements.txt
