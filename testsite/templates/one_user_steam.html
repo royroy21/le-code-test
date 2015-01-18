@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content_area %}
+<script>
+function goBack()
+{
+    window.history.back();
+}
+</script>
+    <div>
+        <button onclick="goBack();">Go Back</button>
+        <h3>Steam data for {{ user_object.first_name }} {{ user_object.last_name }}:</h3><br />
+        <div class="grey_background">
+            <h3>Tweet items:</h3><br />
+                {% for tweet_item in tweet_items %}
+                    {{ tweet_item.text }} ({{ tweet_item.created_at }})<br />
+                {% endfor %}
+        </div>
+        <div class="grey_background">
+            <h3>Photo items:</h3><br />
+                {% for photo_item in photo_items %}
+                    {{ photo_item.created_at }} <img src="http://localhost:8888/media/{{ photo_item.image }}"><br />
+                {% endfor %}
+        </div>
+    </div>
+{% endblock %}

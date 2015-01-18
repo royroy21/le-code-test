@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content_area %}
+    <div>
+        <h3>Choose a user stream to view:</h3>
+        <div class="grey_background">
+            {% for user in user_data %}
+                {{ user.0 }} {{ user.1 }}: <a href="/stream/{{ user.2 }}/">view steam</a><br />
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

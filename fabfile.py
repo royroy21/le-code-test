@@ -16,3 +16,18 @@ def make_migrations():
 
 def requirements():
     local('/home/vagrant/.virtualenvs/le-code-test/bin/pip install -r requirements.txt ')
+
+def wipe_database():
+    run_manage('flush')
+
+def create_users():
+    run_manage('loaddata fixtures/user.json')
+    
+def create_items():
+    run_manage('loaddata fixtures/items.json')
+
+def start_roy_test():
+    run_manage('flush')
+    run_manage('loaddata fixtures/user.json')
+    run_manage('loaddata fixtures/items.json')
+

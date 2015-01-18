@@ -11,8 +11,10 @@ class ItemAbstract(models.Model):
 
 
 class PhotoItem(ItemAbstract):
-    image = models.ImageField()
+    image = models.ImageField(upload_to='media/')
+    active = models.BooleanField(default=True)
 
 
 class TweetItem(ItemAbstract):
     text = models.CharField(max_length=150)
+    active = models.BooleanField(default=True)
